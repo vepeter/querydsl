@@ -530,9 +530,11 @@ public class SelectBase extends AbstractBaseTest {
             int diff3 = query2.singleResult(SQLExpressions.datediff(dp, employee.datefield, employee2.datefield));
             assertEquals(diff1, -diff2);
         }
-
         Timestamp timestamp = new Timestamp(new java.util.Date().getTime());
-        query.singleResult(SQLExpressions.datediff(DatePart.minute, Expressions.currentTimestamp(), timestamp));
+        for (DatePart dp : dps) {
+            query.singleResult(SQLExpressions.datediff(dp, Expressions.currentTimestamp(), timestamp));
+        }
+
     }
 
     @Test
