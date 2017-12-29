@@ -5,6 +5,9 @@ services:
   - mongodb
 addons:
   postgresql: "9.3"
+  apt:
+    packages:
+      - postgresql-9.3-postgis-2.3
 env:
   matrix:
     - MODULE=!querydsl-scala PROFILES=all,travis,examples
